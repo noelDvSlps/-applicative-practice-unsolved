@@ -7,12 +7,10 @@ import { data } from "../data/data";
 export function getAsteroidNames(data) {
   // Your code goes here...
   const asteroids = data.asteroids;
-  let arrAsteroids = [];
-  asteroids.forEach((asteroid) => {
-    arrAsteroids.push(asteroid.name);
-  });
-  
-  return arrAsteroids;
+  const newArr = asteroids.map((asteroid) => {
+    return asteroid.name;
+  })
+  return newArr;
 }
 
 

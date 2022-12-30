@@ -6,6 +6,17 @@ import { data } from "../data/data";
 
 export function lowMoonsPlanets(data) {
   // Your code goes here...
+  const planets = data.planets;
+  let arrReturn = [];
+  planets.forEach((planet) => {
+    let hasMoons = 'moons' in planet;
+    if (hasMoons){
+      if (planet.moons.length < 10) {
+        arrReturn.push(planet.name);
+      }
+    }
+  });
+  return arrReturn;
 }
 
 

@@ -6,6 +6,17 @@ import { data } from "../data/data";
 
 export function getPlanetsWithMassValue(data, number) {
   // Your code goes here...
+  const planets = data.planets;
+  let arrReturn = [];
+  planets.forEach((planet) => {
+    let massValue = planet.mass.massValue;
+    if (massValue >= number){
+      arrReturn.push(planet.name);
+    }
+    
+  });
+  
+  return arrReturn;
 }
 
 

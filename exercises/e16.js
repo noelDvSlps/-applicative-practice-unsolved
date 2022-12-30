@@ -6,6 +6,18 @@ import { data } from "../data/data";
 
 export function getGreatestDiscoveryYear(data) {
   // Your code goes here...
+  const asteroids = data.asteroids;
+    const uniqueYear = [...new Set(asteroids.map(asteroid => asteroid.discoveryYear))];
+    let numberOfAsteroids = 0;
+    let year = 0;
+    for (let i = 0; i < uniqueYear.length; i++){
+        let num = (asteroids.filter(asteroid => asteroid.discoveryYear === uniqueYear[i])).length;
+        if (num > numberOfAsteroids) {
+            numberOfAsteroids = num;
+            year = uniqueYear[i];
+        }
+    }
+    return year;
 }
 
 

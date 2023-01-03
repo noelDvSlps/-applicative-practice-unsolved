@@ -7,18 +7,19 @@ import { data } from "../data/data";
 export function getGreatestDiscoveryYear(data) {
   // Your code goes here...
   // feel free to import your `maxBy` or `minBy` methods from previous lessons
-  const asteroids = data.asteroids;
-  const uniqueYear = [...new Set(asteroids.map(asteroid => asteroid.discoveryYear))];
-    let numberOfAsteroids = 0;
-    let year = 0;
-    for (let i = 0; i < uniqueYear.length; i++){
-        let num = (asteroids.filter(asteroid => asteroid.discoveryYear === uniqueYear[i])).length;
-        if (num > numberOfAsteroids) {
-            numberOfAsteroids = num;
-            year = uniqueYear[i];
-        }
-    }
-    return year;
+  const myDataStructure = data.asteroids.reduce(
+    (acc, asteroid) => {
+      const discoveryYear = asteroid.discoveryYear;
+      acc[2].hasOwnProperty(discoveryYear) ?
+        acc[2] = {...acc[2],  [discoveryYear]: [...acc[2][discoveryYear], asteroid.name]}
+      :
+        acc[2] = {...acc[2],  [discoveryYear]: [asteroid.name] }
+      
+      let lengthObj = acc[2][discoveryYear].length
+       acc = lengthObj > acc[0] ? [lengthObj, discoveryYear, acc[2]] : [acc[0], acc[1], acc[2]] ;
+       return (acc);
+}, [0, 0, {}]);
+return myDataStructure[1];
 }
 
 // === TEST YOURSELF ===

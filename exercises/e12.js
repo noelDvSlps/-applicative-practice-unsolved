@@ -6,8 +6,7 @@ import { data } from "../data/data";
 
 export function allPlanetsMoonsCount(data) {
   // Your code goes here...
-  return (data.planets.filter((planet) =>  {if ("moons" in planet) {return planet.moons.length > 0;}}))
-  .reduce((acc, planet) => { return acc + planet.moons.length}, 0);
+  return data.planets.reduce((acc, planet) => acc + ('moons' in planet ? planet.moons.length : 0), 0);
 }
 
 
